@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.6.0"
+ruby
 
 gem "sinatra"
 gem "octokit"
