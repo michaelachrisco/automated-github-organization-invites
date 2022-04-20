@@ -59,5 +59,8 @@ DEPENDENCIES
   sinatra
   slim
 
+RUBY VERSION
+   ruby 3.1.2p20
+
 BUNDLED WITH
-   1.13.6
+   2.3.11
