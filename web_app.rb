@@ -6,7 +6,7 @@ require 'octokit'
 
 TOKEN = ENV['GITHUB_TOKEN']
 ORG_NAME = ENV['ORGANIZATION_NAME']
-TEAM_NAME = ENV['TEAM_NAME']
+TEAM_NAME = "test-team"
 BACKGROUND_CHOICE = ENV['BACKGROUND_COLOR']
 
 if BACKGROUND_CHOICE == 'green'
@@ -74,8 +74,7 @@ end
 
 def get_team(client)
   teams = client.org_teams(ORG_NAME)
-  team = teams.find {|t| t.slug.downcase == TEAM_NAME.downcase }
-  return team
+  return teams.find {|t| t.slug.downcase == TEAM_NAME.downcase }
 end
 
 def add_user_to_org(client, username)
@@ -89,7 +88,7 @@ end
 
 def add_user_to_team_in_org(client, username, team_id)
   begin
-    client.add_team_membership(team.id, username)
+    client.add_team_membership(team_id, username)
     "Sent invite to join '#{ORG_NAME}' and team '#{TEAM_NAME}', Check your EMAIL"
   rescue Octokit::ClientError => e
     "Error: #{e.class}. #{e.message}"
